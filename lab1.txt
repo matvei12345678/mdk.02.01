@@ -22,6 +22,7 @@ tmpfs                      3143304         4028    3139276            1% /run
 /dev/nvme0n1p5            48281448     26060908   19735496           57% /
 /dev/nvme0n1p2              995224       352732     573760           39% /boot
 /dev/nvme0n1p6           188018008     70121844  108321956           40% /home
+311U10@git:~/MDK.02.01$ 
 /dev/nvme0n1p1              610120         8028     602092            2% /boot/efi
 /dev/sda1                239254916     19660268  207368396            9% /VSD
 tmpfs                      1571648          140    1571508            1% /run/user/1804801181
@@ -43,6 +44,7 @@ Swap:        7931900           0     7931900
  sync.sh           Видео         Изображения  'Рабочий стол'
 'VirtualBox VMs'   Документы     Музыка        Шаблоны
 
+311U10@git:~/MDK.02.01$ 
 [311u10@311U10 bin]$ ls
 homectl                                tpm2_clockrateadjust
  host                                   tpm2_commit
@@ -82,6 +84,7 @@ bash: cd: ~username: No such file or directory
  sync.sh           Видео         Изображения  'Рабочий стол'
 'VirtualBox VMs'   Документы     Музыка        Шаблоны
 
+311U10@git:~/MDK.02.01$ 
 [311u10@311U10 ~]$ ls /usr
 bin    i686-w64-mingw32  lib    libexec  sbin   src  x86_64-w64-mingw32
 games  include           lib64  local    share  tmp
@@ -100,6 +103,7 @@ games  include           lib64  local    share  tmp
 итого 1516
 -rw-r--r--. 1 311u10 пользователи домена     110 янв 30 10:01  lab1.txt
 -rw-------. 1 311u10 пользователи домена     720 дек 24 09:14  sync.sh
+311U10@git:~/MDK.02.01$ 
 drwxr-xr-x. 6 311u10 пользователи домена    4096 янв 30 09:36 'VirtualBox VMs'
 -rw-r--r--. 1 311u10 пользователи домена 1504831 янв 22 14:22  будькин.odt
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Видео
@@ -121,6 +125,7 @@ drwx------. 2 311u10 пользователи домена    4096 янв 22 13:
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Видео
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Документы
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Изображения
+311U10@git:~/MDK.02.01$ 
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Музыка
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Общедоступные
 drwxr-xr-x. 2 311u10 пользователи домена    4096 дек 24 09:14  Шаблоны
@@ -148,6 +153,7 @@ root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
 daemon:x:2:2:daemon:/sbin:/sbin/nologin
 adm:x:3:4:adm:/var/adm:/sbin/nologin
+311U10@git:~/MDK.02.01$ 
 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
 sync:x:5:0:sync:/sbin:/bin/sync
 
@@ -373,12 +379,6 @@ alias mingw64-env='eval `rpm --eval %{mingw64_env}`'
 alias which='(alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot'
 alias zegrep='zegrep --color=auto'
 alias zfgrep='zfgrep --color=auto'
-alias zgrep='zgrep --color=auto'
+alias zgrep='zgrep --color=auto
 
 
-
-
-
-
-
-  
