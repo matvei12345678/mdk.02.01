@@ -1,0 +1,161 @@
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker search ubuntu
+NAME                             DESCRIPTION                                     STARS     OFFICIAL
+ubuntu                           Ubuntu is a Debian-based Linux operating sys…   17496     [OK]
+ubuntu/squid                     Squid is a caching proxy for the Web. Long-t…   107       
+ubuntu/nginx                     Nginx, a high-performance reverse proxy & we…   127       
+ubuntu/cortex                    Cortex provides storage for Prometheus. Long…   4         
+ubuntu/kafka                     Apache Kafka, a distributed event streaming …   53        
+ubuntu/prometheus                Prometheus is a systems and service monitori…   70        
+ubuntu/apache2                   Apache, a secure & extensible open-source HT…   90        
+ubuntu/bind9                     BIND 9 is a very flexible, full-featured DNS…   102       
+ubuntu/zookeeper                 ZooKeeper maintains configuration informatio…   13        
+ubuntu/mysql                     MySQL open source fast, stable, multi-thread…   67        
+ubuntu/redis                     Redis, an open source key-value store. Long-…   23        
+ubuntu/postgres                  PostgreSQL is an open source object-relation…   41        
+ubuntu/jre                       Distroless Java runtime based on Ubuntu. Lon…   19        
+ubuntu/dotnet-aspnet             Chiselled Ubuntu runtime image for ASP.NET a…   25        
+ubuntu/cassandra                 Cassandra, an open source NoSQL distributed …   2         
+ubuntu/memcached                 Memcached, in-memory keyvalue store for smal…   5         
+ubuntu/grafana                   Grafana, a feature rich metrics dashboard & …   12        
+ubuntu/python                    A chiselled Ubuntu rock with the Python runt…   20        
+ubuntu/dotnet-runtime            Chiselled Ubuntu runtime image for .NET apps…   20        
+ubuntu/prometheus-alertmanager   Alertmanager handles client alerts from Prom…   9         
+ubuntu/dotnet-deps               Chiselled Ubuntu for self-contained .NET & A…   16        
+ubuntu/telegraf                  Telegraf collects, processes, aggregates & w…   4         
+ubuntu/mlflow                    MLFlow: for managing the machine learning li…   5         
+ubuntu/loki                      Grafana Loki, a log aggregation system like …   2         
+ubuntu/chiselled-jre             [MOVED TO ubuntu/jre] Chiselled JRE: distrol…   3         
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker pull ubuntu:20.04
+20.04: Pulling from library/ubuntu
+d9802f032d67: Pull complete 
+Digest: sha256:8e5c4f0285ecbb4ead070431d29b576a530d3166df73ec44affc1cd27555141b
+Status: Downloaded newer image for ubuntu:20.04
+docker.io/library/ubuntu:20.04
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker pull fedora
+Using default tag: latest
+latest: Pulling from library/fedora
+0c5a86865c5d: Pull complete 
+Digest: sha256:3ec60eb34fa1a095c0c34dd37cead9fd38afb62612d43892fcf1d3425c32bc1e
+Status: Downloaded newer image for fedora:latest
+docker.io/library/fedora:latest
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+7cf63256a31a: Pull complete 
+bf9acace214a: Pull complete 
+513c3649bb14: Pull complete 
+d014f92d532d: Pull complete 
+9dd21ad5a4a6: Pull complete 
+943ea0f0c2e4: Pull complete 
+103f50cb3e9f: Pull complete 
+Digest: sha256:9d6b58feebd2dbd3c56ab5853333d627cc6e281011cfd6050fa4bcf2072c9496
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker pull drupal
+Using default tag: latest
+latest: Pulling from library/drupal
+7cf63256a31a: Already exists 
+02aa0bfe816b: Pull complete 
+8929067778be: Pull complete 
+063974348ccd: Pull complete 
+f26f1ad6e54d: Pull complete 
+a97035320663: Pull complete 
+55a6d997f013: Pull complete 
+be1b093a2245: Pull complete 
+3acaaa0d0c5b: Pull complete 
+0e837c2fac70: Pull complete 
+aecd72a519c7: Pull complete 
+7f47c5f800b7: Pull complete 
+1db31e85631a: Pull complete 
+4f4fb700ef54: Pull complete 
+eb95d85d9c13: Pull complete 
+256021636159: Pull complete 
+b2f19bee0bed: Pull complete 
+7dc199cf18af: Pull complete 
+2548765124dd: Pull complete 
+Digest: sha256:417681429bbcf4aabf2f3a56259edcead03417dc510442c11f7bafe30007f551
+Status: Downloaded newer image for drupal:latest
+docker.io/library/drupal:latest
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+drupal       latest    ff5ba7933d2b   8 days ago     601MB
+nginx        latest    b52e0b094bc0   5 weeks ago    192MB
+fedora       latest    aa6787b90fe6   4 months ago   158MB
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker rmi
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+drupal       latest    ff5ba7933d2b   8 days ago     601MB
+nginx        latest    b52e0b094bc0   5 weeks ago    192MB
+fedora       latest    aa6787b90fe6   4 months ago   158MB
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker rmi -f
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+drupal       latest    ff5ba7933d2b   8 days ago     601MB
+nginx        latest    b52e0b094bc0   5 weeks ago    192MB
+fedora       latest    aa6787b90fe6   4 months ago   158MB
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images -a
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+drupal       latest    ff5ba7933d2b   8 days ago     601MB
+nginx        latest    b52e0b094bc0   5 weeks ago    192MB
+fedora       latest    aa6787b90fe6   4 months ago   158MB
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker rmi id fedora
+Untagged: fedora:latest
+Untagged: fedora@sha256:3ec60eb34fa1a095c0c34dd37cead9fd38afb62612d43892fcf1d3425c32bc1e
+Deleted: sha256:aa6787b90fe61e801687142277458584287469c9596c91766a43fa9f1e524c22
+Deleted: sha256:a38e2aca5767fd20888481c0e7e96d75eb79fca300b3d076c1cd26b731343782
+Error response from daemon: No such image: id:latest
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+drupal       latest    ff5ba7933d2b   8 days ago     601MB
+nginx        latest    b52e0b094bc0   5 weeks ago    192MB
+ubuntu       20.04     6013ae1a63c2   5 months ago   72.8MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker rmi
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run id nginx docker rmi
+Unable to find image 'id:latest' locally
+docker: Error response from daemon: pull access denied for id, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run -d
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create and run a new container from an image
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run -it ubuntu:20.04
+root@323e46b7b5b3:/# pwd
+/
+root@323e46b7b5b3:/# uname -a
+Linux 323e46b7b5b3 6.8.0-1021-azure #25~22.04.1-Ubuntu SMP Thu Jan 16 21:37:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+root@323e46b7b5b3:/# data
+bash: data: command not found
+root@323e46b7b5b3:/# date
+Fri Mar 14 08:14:46 UTC 2025
+root@323e46b7b5b3:/# exit
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED              STATUS                      PORTS     NAMES
+323e46b7b5b3   ubuntu:20.04   "/bin/bash"   About a minute ago   Exited (0) 25 seconds ago             musing_elgamal
