@@ -159,3 +159,21 @@ root@323e46b7b5b3:/# exit
 @matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps -a
 CONTAINER ID   IMAGE          COMMAND       CREATED              STATUS                      PORTS     NAMES
 323e46b7b5b3   ubuntu:20.04   "/bin/bash"   About a minute ago   Exited (0) 25 seconds ago             musing_elgamal
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run -it ff5ba7933d2b 
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Fri Mar 14 08:28:13.707626 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Fri Mar 14 08:28:13.707675 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+^C[Fri Mar 14 08:28:43.779337 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00169: caught SIGTERM, shutting down
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                          PORTS     NAMES
+38b761d58cf4   ff5ba7933d2b   "docker-php-entrypoi…"   2 minutes ago    Exited (0) About a minute ago             condescending_roentgen
+323e46b7b5b3   ubuntu:20.04   "/bin/bash"              16 minutes ago   Exited (0) 15 minutes ago                 musing_elgamal
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker start -i 323e46b7b5b3
+root@323e46b7b5b3:/# pwd
+/
+root@323e46b7b5b3:/# uname -a
+Linux 323e46b7b5b3 6.8.0-1021-azure #25~22.04.1-Ubuntu SMP Thu Jan 16 21:37:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+root@323e46b7b5b3:/# date
+Fri Mar 14 08:35:10 UTC 2025
+root@323e46b7b5b3:/# exit
