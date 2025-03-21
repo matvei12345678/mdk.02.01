@@ -1,0 +1,17 @@
+(Установил docker в ubuntu) 
+Скачал docker-образы на виртуальную машину ubuntu desktop:
+-openjdk
+-mysql
+-postgres
+-mariadb
+-php
+-phpmyadmin
+-httpd
+-Nginx
+-alpine
+-redis
+-python
+-wordpress
+-
+-
+-
