@@ -1,0 +1,238 @@
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ mkdir prg2 
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ ]cd prg/2
+bash: ]cd: command not found
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ ]cd prg2/
+bash: ]cd: command not found
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ cd prg2/
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim Dockerfile 
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim Dockerfile 
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim Dockerfile 
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ [A
+bash: [A: command not found
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim Dockerfile 
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim index.php
+
+[1]+  Stopped                 vim index.php
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim index.
+
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker build -t testphp:0.1.
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker build -t testphp:0.1.
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker build -t testphp:0.1.
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker build -t testphp:0.1. .
+[+] Building 16.8s (9/9) FINISHED                                                                                                                                                docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                       0.0s
+ => => transferring dockerfile: 112B                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/php:7.2-apache                                                                                                                          1.1s
+ => [auth] library/php:pull token for registry-1.docker.io                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                                          0.0s
+ => => transferring context: 2B                                                                                                                                                            0.0s
+ => [1/3] FROM docker.io/library/php:7.2-apache@sha256:4dc0f0115acf8c2f0df69295ae822e49f5ad5fe849725847f15aa0e5802b55f8                                                                    9.2s
+ => => resolve docker.io/library/php:7.2-apache@sha256:4dc0f0115acf8c2f0df69295ae822e49f5ad5fe849725847f15aa0e5802b55f8                                                                    0.0s
+ => => sha256:c61d277263e19d2ce30a6bae41115c811eb0f9274a601a5e3ee621e54c8a74f7 13.18kB / 13.18kB                                                                                           0.0s
+ => => sha256:db606474d60ce31604505c7d6dad9a66cb42f3818fca738832db2f2091cf89c9 225B / 225B                                                                                                 0.4s
+ => => sha256:4dc0f0115acf8c2f0df69295ae822e49f5ad5fe849725847f15aa0e5802b55f8 1.65kB / 1.65kB                                                                                             0.0s
+ => => sha256:6ec7b7d162b24bd6df88abde89ceb6d7bbc2be927f025c9dd061af2b0c328cfe 27.10MB / 27.10MB                                                                                           0.4s
+ => => sha256:25417b6c9c2e1a52b551ba89087f4d07c216f58784773c9e7a1710a1f6e2b4a1 3.24kB / 3.24kB                                                                                             0.0s
+ => => sha256:afb30f0cd8e0ff78b5eecdc2d9365a50441ad83c5db5f1e87942d6426237fa56 76.65MB / 76.65MB                                                                                           1.2s
+ => => extracting sha256:6ec7b7d162b24bd6df88abde89ceb6d7bbc2be927f025c9dd061af2b0c328cfe                                                                                                  1.5s
+ => => sha256:4c761b44e2ccbff3f10b254b21bb00a52dfd26919ad9e3f7efcd569196e6c26b 18.68MB / 18.68MB                                                                                           1.3s
+ => => sha256:3bb2e805159413e5278b859f7fbb86ddfc99e667cb705d5d5aec0a7c8ffcf1b5 225B / 225B                                                                                                 0.5s
+ => => sha256:c2199db96575122fd559c29b619a2773fe9069e0266312a6369ac95f4464b1dd 434B / 434B                                                                                                 1.2s
+ => => sha256:1b9a9381eea8f93068e8043f18ea59b709c07256e2f90962931a1433fbdf5e79 487B / 487B                                                                                                 1.4s
+ => => sha256:fd07bbc59d347c16686f107676436a2281e4128033f105ca7a602aa195bcbe04 12.65MB / 12.65MB                                                                                           1.7s
+ => => sha256:983308f4f0d6304dc6cecde8fd66ba5a94a08873a3b8205eb5ff1ea98b419dbc 13.82MB / 13.82MB                                                                                           1.6s
+ => => sha256:72b73ab27698b55aa309173abd0cdd758291b9feaac31342c48ff12f3be14876 494B / 494B                                                                                                 1.5s
+ => => sha256:6c13f026e6da09e10ca2edb704b335a62bac29e549a2d0b35e535c9aa8dbeeba 2.27kB / 2.27kB                                                                                             1.8s
+ => => sha256:e5e6cd16368920e691da5b8791184d7a8d579dd5cd5e8c533ad2bf0b82c2d0fc 248B / 248B                                                                                                 1.8s
+ => => sha256:5c5516e56582a30bd2e69c32d17a169ed7227900318e9d7b5949c8fb447308f5 210B / 210B                                                                                                 1.9s
+ => => sha256:154729f6ba8609ef7d5af1bfad81efe814cbbca18509834908735c9aced174d3 897B / 897B                                                                                                 1.9s
+ => => extracting sha256:db606474d60ce31604505c7d6dad9a66cb42f3818fca738832db2f2091cf89c9                                                                                                  0.0s
+ => => extracting sha256:afb30f0cd8e0ff78b5eecdc2d9365a50441ad83c5db5f1e87942d6426237fa56                                                                                                  1.9s
+ => => extracting sha256:3bb2e805159413e5278b859f7fbb86ddfc99e667cb705d5d5aec0a7c8ffcf1b5                                                                                                  0.0s
+ => => extracting sha256:4c761b44e2ccbff3f10b254b21bb00a52dfd26919ad9e3f7efcd569196e6c26b                                                                                                  0.4s
+ => => extracting sha256:c2199db96575122fd559c29b619a2773fe9069e0266312a6369ac95f4464b1dd                                                                                                  0.0s
+ => => extracting sha256:1b9a9381eea8f93068e8043f18ea59b709c07256e2f90962931a1433fbdf5e79                                                                                                  0.0s
+ => => extracting sha256:fd07bbc59d347c16686f107676436a2281e4128033f105ca7a602aa195bcbe04                                                                                                  0.0s
+ => => extracting sha256:72b73ab27698b55aa309173abd0cdd758291b9feaac31342c48ff12f3be14876                                                                                                  0.0s
+ => => extracting sha256:983308f4f0d6304dc6cecde8fd66ba5a94a08873a3b8205eb5ff1ea98b419dbc                                                                                                  0.3s
+ => => extracting sha256:6c13f026e6da09e10ca2edb704b335a62bac29e549a2d0b35e535c9aa8dbeeba                                                                                                  0.0s
+ => => extracting sha256:e5e6cd16368920e691da5b8791184d7a8d579dd5cd5e8c533ad2bf0b82c2d0fc                                                                                                  0.0s
+ => => extracting sha256:5c5516e56582a30bd2e69c32d17a169ed7227900318e9d7b5949c8fb447308f5                                                                                                  0.0s
+ => => extracting sha256:154729f6ba8609ef7d5af1bfad81efe814cbbca18509834908735c9aced174d3                                                                                                  0.0s
+ => [internal] load build context                                                                                                                                                          0.0s
+ => => transferring context: 234B                                                                                                                                                          0.0s
+ => [2/3] WORKDIR /VAR/WWW/html                                                                                                                                                            0.0s
+ => [3/3] COPY . /var/www/html                                                                                                                                                             0.1s
+ => exporting to image                                                                                                                                                                     0.6s
+ => => exporting layers                                                                                                                                                                    0.6s
+ => => writing image sha256:c64cfa8bd545f01a1f199cabf3bb39be280012367bf287cc2ef9171fb5705d7a                                                                                               0.0s
+ => => naming to docker.io/library/testphp:0.1.                                                                                                                                            0.0s
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+testphp      0.1.      c64cfa8bd545   55 seconds ago   410MB
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name --rm testphp:0.1
+Unable to find image 'testphp:0.1' locally
+docker: Error response from daemon: pull access denied for testphp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name --rm testphp:0.1\
+> ^C
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ ^C
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name phpapp  --rm testphp:0.1\
+> ^C
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name phpapp  --rm testphp:0.1
+Unable to find image 'testphp:0.1' locally
+docker: Error response from daemon: pull access denied for testphp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+testphp      0.1.      c64cfa8bd545   11 minutes ago   410MB
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name phpapp  --rm testphp:0.1.
+f6fddcf9da55801f023ba280f4b08780bd8f3da5a62bebf93563a3a9740beefc
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim index.php
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker stop phpapp
+phpapp
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker build -t testphp:0.2 .
+[+] Building 0.7s (9/9) FINISHED                                                                                                                                                 docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                       0.0s
+ => => transferring dockerfile: 112B                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/php:7.2-apache                                                                                                                          0.7s
+ => [auth] library/php:pull token for registry-1.docker.io                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                                          0.0s
+ => => transferring context: 2B                                                                                                                                                            0.0s
+ => [1/3] FROM docker.io/library/php:7.2-apache@sha256:4dc0f0115acf8c2f0df69295ae822e49f5ad5fe849725847f15aa0e5802b55f8                                                                    0.0s
+ => [internal] load build context                                                                                                                                                          0.0s
+ => => transferring context: 59B                                                                                                                                                           0.0s
+ => CACHED [2/3] WORKDIR /VAR/WWW/html                                                                                                                                                     0.0s
+ => CACHED [3/3] COPY . /var/www/html                                                                                                                                                      0.0s
+ => exporting to image                                                                                                                                                                     0.0s
+ => => exporting layers                                                                                                                                                                    0.0s
+ => => writing image sha256:c64cfa8bd545f01a1f199cabf3bb39be280012367bf287cc2ef9171fb5705d7a                                                                                               0.0s
+ => => naming to docker.io/library/testphp:0.2                                                                                                                                             0.0s
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker run -d -p 8080:80 --name phpapp  --rm testphp:0.2
+ae6315de9efdd73a55d01330b8cf1d4b54309cf5bb716216c3bef9cd3739fc03
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker-compose version 
+Docker Compose version v2.34.0
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker version 
+Client:
+ Version:           27.5.1-1
+ API version:       1.47
+ Go version:        go1.22.11
+ Git commit:        9f9e4058019a37304dc6572ffcbb409d529b59d8
+ Built:             Tue Jan 21 23:46:20 UTC 2025
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server:
+ Engine:
+  Version:          27.5.1-1
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.22.11
+  Git commit:       4c9b3b011ae4c30145a7b344c870bdda01b454e2
+  Built:            Tue Jan 21 23:46:50 2025
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.7.26-1
+  GitCommit:        753481ec61c7c8955a23d6ff7bc8e4daed455734
+ runc:
+  Version:          1.1.15-1
+  GitCommit:        bc20cb4497af9af01bea4a8044f1678ffca2745c
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim docker-compose.yml
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ ls -l
+total 12
+-rw-rw-rw- 1 codespace codespace  75 Mar 27 05:47 Dockerfile
+-rw-rw-rw- 1 codespace codespace 244 Mar 27 06:44 docker-compose.yml
+-rw-rw-rw- 1 codespace codespace  84 Mar 27 06:06 index.php
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker-compose build
+validating /workspaces/mdk.02.01/prg2/docker-compose.yml: services.db.environment must be a mapping
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker-compose build .
+validating /workspaces/mdk.02.01/prg2/docker-compose.yml: services.db.environment must be a mapping
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim docker-compose.yml
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim docker-compose.yml
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker-compose build 
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker-compose up
+[+] Running 30/30
+ ✔ db Pulled                                                                                                                                                                              17.1s 
+   ✔ 9cb31e2e37ea Pull complete                                                                                                                                                            1.6s 
+   ✔ b5d0c07e1b39 Pull complete                                                                                                                                                            5.9s 
+   ✔ 146766f55375 Pull complete                                                                                                                                                            5.9s 
+   ✔ 7e9e7bda14da Pull complete                                                                                                                                                            5.9s 
+   ✔ 4e0d8410ccaa Pull complete                                                                                                                                                            5.9s 
+   ✔ e54392e56360 Pull complete                                                                                                                                                           15.6s 
+   ✔ c1f62eab2318 Pull complete                                                                                                                                                           15.6s 
+   ✔ d645c8b36c27 Pull complete                                                                                                                                                           15.6s 
+ ✔ phpmyadmin Pulled                                                                                                                                                                      18.3s 
+   ✔ 6e909acdb790 Pull complete                                                                                                                                                            5.9s 
+   ✔ 5db2c4b6137b Pull complete                                                                                                                                                            5.9s 
+   ✔ dacb60b59038 Pull complete                                                                                                                                                           15.6s 
+   ✔ 64450047668b Pull complete                                                                                                                                                           15.6s 
+   ✔ 4d6386e035f7 Pull complete                                                                                                                                                           15.6s 
+   ✔ e4ca7ebe0914 Pull complete                                                                                                                                                           15.6s 
+   ✔ 3dc5d9089396 Pull complete                                                                                                                                                           15.6s 
+   ✔ 1778f52baa09 Pull complete                                                                                                                                                           15.6s 
+   ✔ a5d9cb1c80ec Pull complete                                                                                                                                                           15.6s 
+   ✔ b116c8459f57 Pull complete                                                                                                                                                           15.6s 
+   ✔ 8f8ddda3587a Pull complete                                                                                                                                                           15.6s 
+   ✔ f432ea27fc70 Pull complete                                                                                                                                                           15.6s 
+   ✔ 6a5a37a900f3 Pull complete                                                                                                                                                           15.6s 
+   ✔ 4f4fb700ef54 Pull complete                                                                                                                                                           15.6s 
+   ✔ 2356864ac4b9 Pull complete                                                                                                                                                           15.6s 
+   ✔ 28fa232eddfc Pull complete                                                                                                                                                           15.6s 
+   ✔ a084403b2fe2 Pull complete                                                                                                                                                           16.8s 
+   ✔ 69286ddc9ea5 Pull complete                                                                                                                                                           16.8s 
+   ✔ 21d6bc6af9fd Pull complete                                                                                                                                                           16.8s 
+   ✔ 5fb8db322bbb Pull complete                                                                                                                                                           16.8s 
+[+] Running 3/3
+ ✔ Network prg2_default         Created                                                                                                                                                    0.1s 
+ ✔ Container prg2-phpmyadmin-1  Created                                                                                                                                                    0.0s 
+ ✔ Container prg2-db-1          Created                                                                                                                                                    0.0s 
+Attaching to db-1, phpmyadmin-1
+Error response from daemon: driver failed programming external connectivity on endpoint prg2-phpmyadmin-1 (b3927a14ce1b8d9008460aee122dddf95239e49418d806ed88e5c6352408e5c6): Bind for 0.0.0.0:8080 failed: port is already allocated
+
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ vim docker-compose.yml
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+testphp      0.1.      c64cfa8bd545   58 minutes ago   410MB
+testphp      0.2       c64cfa8bd545   58 minutes ago   410MB
+mariadb      10.11     4254659f2379   7 weeks ago      326MB
+phpmyadmin   latest    052506f2de4d   2 months ago     570MB
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+85d2eb81793f   mariadb:10.11   "docker-entrypoint.s…"   9 minutes ago    Up 9 minutes    3306/tcp                                  prg2-db-1
+ae6315de9efd   testphp:0.2     "docker-php-entrypoi…"   44 minutes ago   Up 44 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   phpapp
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker stop phpapp
+phpapp
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS      NAMES
+85d2eb81793f   mariadb:10.11   "docker-entrypoint.s…"   10 minutes ago   Up 10 minutes   3306/tcp   prg2-db-1
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker stop phpapp
+Error response from daemon: No such container: phpapp
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker stop prg2-db-1
+prg2-db-1
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ mkdir prg3
+@matvei12345678 ➜ /workspaces/mdk.02.01/prg2 (main) $ cd prg3/
+
+
