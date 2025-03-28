@@ -1,0 +1,128 @@
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker volume create vol1
+vol1
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker volume create vol2
+vol2
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker volume ls
+DRIVER    VOLUME NAME
+local     vol1
+local     vol2
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images 
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker pull ubuntu:24.04
+24.04: Pulling from library/ubuntu
+5a7813e071bf: Pull complete 
+Digest: sha256:72297848456d5d37d1262630108ab308d3e9ec7ed1c3286a32fe09856619a782
+Status: Downloaded newer image for ubuntu:24.04
+docker.io/library/ubuntu:24.04
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker images 
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+ubuntu       24.04     a04dc4851cbc   2 months ago   78.1MB
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run --mount type=volume,source=vol1,target=/home/vol1 --name myub -it ubuntu:22.04
+Unable to find image 'ubuntu:22.04' locally
+22.04: Pulling from library/ubuntu
+9cb31e2e37ea: Pull complete 
+Digest: sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2
+Status: Downloaded newer image for ubuntu:22.04
+root@2c6ae334c448:/# cd /home/vol1
+root@2c6ae334c448:/home/vol1# ls -1
+root@2c6ae334c448:/home/vol1# cat > test_vol.txt
+^[[D
+                    
+^C      
+root@2c6ae334c448:/home/vol1# ^C
+root@2c6ae334c448:/home/vol1# ^C
+root@2c6ae334c448:/home/vol1# cat > test_vol.txt
+проверкафункций тома vol1
+1224436
+exit
+^C
+root@2c6ae334c448:/home/vol1# 
+exit
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker volume inspect vol1
+[
+    {
+        "CreatedAt": "2025-03-28T06:11:56Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/vol1/_data",
+        "Name": "vol1",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run --mount type=volume,source=vol1,target=/home/vol1 --mount type=volume,source=vol2,target=/home/vol2 --name myub1 -it --rm ubuntu:22.
+04
+root@cf21380ad82c:/# cd /home/vol1
+root@cf21380ad82c:/home/vol1# ls -l
+total 4
+-rw-r--r-- 1 root root 130 Mar 28 07:10 test_vol.txt
+-rw-r--r-- 1 root root   0 Mar 28 06:41 test_vol2_myub1.txt
+root@cf21380ad82c:/home/vol1# cat > test_vol.txt
+усердно пишим и проверяем работу vol1 из этого лучшегог контейнера myub1^C
+root@cf21380ad82c:/home/vol1# cd ../vol2
+root@cf21380ad82c:/home/vol2# ls -l 
+total 0
+root@cf21380ad82c:/home/vol2# cp ../vol1/* ./
+root@cf21380ad82c:/home/vol2# ls -l@matvei12345678 ➜ /workspaces/mdk.02.01 (main) $ docker run --mount type=volume,source=vol1,target=/home/vol1 --mount type=volume,source=vol2,target=/home/vol2 --name myub1 -it --rm ubuntu:22.
+04
+root@cf21380ad82c:/# cd /home/vol1
+root@cf21380ad82c:/home/vol1# ls -l
+total 4
+-rw-r--r-- 1 root root 130 Mar 28 07:10 test_vol.txt
+-rw-r--r-- 1 root root   0 Mar 28 06:41 test_vol2_myub1.txt
+root@cf21380ad82c:/home/vol1# cat > test_vol.txt
+усердно пишим и проверяем работу vol1 из этого лучшегог контейнера myub1^C
+root@cf21380ad82c:/home/vol1# cd ../vol2
+root@cf21380ad82c:/home/vol2# ls -l 
+total 0
+root@cf21380ad82c:/home/vol2# cp ../vol1/* ./
+root@cf21380ad82c:/home/vol2# ls -l
+total 0
+-rw-r--r-- 1 root root 0 Mar 28 07:16 test_vol.txt
+-rw-r--r-- 1 root root 0 Mar 28 07:16 test_vol2_myub1.txt
+root@cf21380ad82c:/home/vol2# 
+
+@matvei12345678➜ workspaces/mdk.02.01 (main) $ docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS                        PORTS     NAMES
+792c75523642   ubuntu:22.04   "/bin/bash"   39 minutes ago   Exited (130) 32 minutes ago             myub
+6f55e80155d2   9452be48b375   "/bin/bash"   8 days ago       Exited (0) 8 days ago                   reverent_einstein
+7ffe1d8c4156   a04dc4851cbc   "/bin/bash"   8 days ago       Exited (0) 8 days ago                   pensive_davinci
+@matvei12345678➜ workspaces/mdk.02.01 (main) $ mkdir vol3
+@matvei12345678➜ /workspaces/mdk.01.02 (main) $ cd vol3
+@matvei12345678➜ /workspaces/mdk.01.02/vol3 (main) $ cat >massage_to_container
+Holla от хостовой системы контейнеру 
+@matvei12345678➜ /workspaces/mdk.02.01/vol3 (main) $ 
+@matvei12345678➜ /workspaces/mdk.02.01/vol3 (main) $ docker run --mount type=bind,source=.,target=/home/vol3 --mount type=volume,source=vol2,target=/home/vol2 --name myub1 -it --rm ubuntu:22.04
+root@cf21380ad82c:/# cd /home /vol3
+bash: cd: too many arguments
+root@cf21380ad82c:/# cd /home/vol3
+root@cf21380ad82c:/home/vol3# ls -l
+total 4
+-rw-rw-rw- 1 1000 1000 77 Mar 28 07:01 massage_to_container
+root@cf21380ad82c:/home/vol3# cat message_to_container
+cat: message_to_container: No such file or directory
+root@cf21380ad82c:/home/vol3# cat massage_to_container
+Holla от хостовой системы контейнеру 
+23345644376
+root@cf21380ad82c:/home/vol3# cd ..
+root@cf21380ad82c:/home# cd vol3
+root@cf21380ad82c:/home/vol2# ls -l
+total 4
+-rw-r--r-- 1 root root 61 Mar 28 06:54 test_vol.txt
+-rw-r--r-- 1 root root  0 Mar 28 06:54 test_vol2_myub1.txt
+root@cf21380ad82c:/home/vol2# cd ..
+root@cf21380ad82c:/home# ls -1
+vol2
+vol3
+root@cf21380ad82c:/home# exit
+exit
+@matvei12345678➜ /workspaces/mdk.02.01/vol3 (main) $
+total 0
+-rw-r--r-- 1 root root 0 Mar 28 07:16 test_vol.txt
+-rw-r--r-- 1 root root 0 Mar 28 07:16 test_vol2_myub1.txt
+root@cf21380ad82c:/home/vol2# exit
+exit
