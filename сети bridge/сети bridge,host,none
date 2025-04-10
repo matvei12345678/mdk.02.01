@@ -1,0 +1,277 @@
+u10@u10-VirtualBox:~/Рабочий стол$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+e734a69c1c55   bridge    bridge    local
+bbe504b54358   host      host      local
+0a3e1740fc2b   none      null      local
+u10@u10-VirtualBox:~/Рабочий стол$ ip a 
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:f1:92:a9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 85991sec preferred_lft 85991sec
+    inet6 fe80::1da9:864:596d:a6ca/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:ff:ac:53 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.1/24 brd 192.168.10.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::c2cb:5911:3af0:a3eb/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether c2:15:4c:db:99:c0 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+u10@u10-VirtualBox:~/Рабочий стол$ cat /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	u10-VirtualBox
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge my_bridge
+df4a3ea4059726ff27b0be6a11f94bdd6006ebb08a4878f3019ade3625318fba
+u10@u10-VirtualBox:~/Рабочий стол$ docker network ls
+NETWORK ID     NAME        DRIVER    SCOPE
+e734a69c1c55   bridge      bridge    local
+bbe504b54358   host        host      local
+df4a3ea40597   my_bridge   bridge    local
+0a3e1740fc2b   none        null      local
+u10@u10-VirtualBox:~/Рабочий стол$ cat /etc/resolv.conf 
+# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+# Do not edit.
+#
+# This file might be symlinked as /etc/resolv.conf. If you're looking at
+# /etc/resolv.conf and seeing this text, you have followed the symlink.
+#
+# This is a dynamic resolv.conf file for connecting local clients to the
+# internal DNS stub resolver of systemd-resolved. This file lists all
+# configured search domains.
+#
+# Run "resolvectl status" to see details about the uplink DNS servers
+# currently in use.
+#
+# Third party programs should typically not access this file directly, but only
+# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+# different way, replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 127.0.0.53
+options edns0 trust-ad
+search nkti.local
+u10@u10-VirtualBox:~/Рабочий стол$ cat /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	u10-VirtualBox
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+u10@u10-VirtualBox:~/Рабочий стол$ docker network ls
+NETWORK ID     NAME        DRIVER    SCOPE
+e734a69c1c55   bridge      bridge    local
+bbe504b54358   host        host      local
+df4a3ea40597   my_bridge   bridge    local
+0a3e1740fc2b   none        null      local
+u10@u10-VirtualBox:~/Рабочий стол$ docker network inspect my_bridge
+[
+    {
+        "Name": "my_bridge",
+        "Id": "df4a3ea4059726ff27b0be6a11f94bdd6006ebb08a4878f3019ade3625318fba",
+        "Created": "2025-04-10T11:12:03.627944561+05:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont1 --rm alpine
+0a31cf4064a150eca812dcd6ea146d7ffb449fe59fab65cb5fb4215ddd8d34d0
+u10@u10-VirtualBox:~/Рабочий стол$ docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS          PORTS     NAMES
+0a31cf4064a1   alpine    "/bin/sh"   54 seconds ago   Up 50 seconds             cont1
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 ip a 
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if6: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether a6:b2:4a:fd:9a:81 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.2/16 brd 172.18.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 ping -c 4 192.168.30.62
+PING 192.168.30.62 (192.168.30.62): 56 data bytes
+
+--- 192.168.30.62 ping statistics ---
+4 packets transmitted, 0 packets received, 100% packet loss
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.0.1 my192_№1
+Error response from daemon: invalid network config:
+invalid subnet 192.168.0.1: invalid CIDR block notation
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.1 my192_№1
+Error response from daemon: invalid network config:
+invalid subnet 192.168.30.1: invalid CIDR block notation
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.0/26 --gateway 192.168.30.62
+docker: 'docker network create' requires 1 argument
+
+Usage:  docker network create [OPTIONS] NETWORK
+
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.0/26 --gateway 192.168.30.62
+docker: 'docker network create' requires 1 argument
+
+Usage:  docker network create [OPTIONS] NETWORK
+
+Run 'docker network create --help' for more information
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.0/26 --gateway 192.168.30.62 my192_N1
+0ccb5f623816274d6fd77f2cc26f5a29dccf17f0f0ee68876f1f3b98c550c7bf
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.64/26 --gateway 192.168.30.65 my192_N2
+6198a57ecce0532a23d55adf82b85eec672f91b6725f734d64bcc14440b50e69
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.128/26 --gateway 192.168.30.129 my192_N3
+5a7012b3dcd4458140320f7570821dc03d1aa5eb9e1c7471f1baee797dc3ba40
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.160/26 --gateway 192.168.30.161 my192_N4
+Error response from daemon: invalid network config:
+invalid subnet 192.168.30.160/26: it should be 192.168.30.128/26
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.64/26 --gateway 192.168.30.65 my192_N2
+Error response from daemon: network with name my192_N2 already exists
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.128/27 --gateway 192.168.30.129 my192_N3
+Error response from daemon: network with name my192_N3 already exists
+u10@u10-VirtualBox:~/Рабочий стол$ docker network my192_N3
+docker: unknown command: docker network my192_N3
+
+Usage:  docker network
+
+Run 'docker network --help' for more information
+u10@u10-VirtualBox:~/Рабочий стол$ docker network rm my192_N3
+my192_N3
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.128/27 --gateway 192.168.30.129 my192_N3
+fc0ec4d16a5feb83a5f6384463cc702d40284b2137cf4bb7ea5fc5740ba2c54e
+u10@u10-VirtualBox:~/Рабочий стол$ docker network create -d bridge --subnet 192.168.30.160/28 --gateway 192.168.30.161 my192_N4
+1fb14bd6497e5bda1780f4ec654fe431efe421d307cf34e306ff067b277de356
+u10@u10-VirtualBox:~/Рабочий стол$ docker network inspect my_bridge
+[
+    {
+        "Name": "my_bridge",
+        "Id": "df4a3ea4059726ff27b0be6a11f94bdd6006ebb08a4878f3019ade3625318fba",
+        "Created": "2025-04-10T11:12:03.627944561+05:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "0a31cf4064a150eca812dcd6ea146d7ffb449fe59fab65cb5fb4215ddd8d34d0": {
+                "Name": "cont1",
+                "EndpointID": "bdedcf17ea1b89a9618982e599053d5cd252facc4a605660763257ef5cd9e1c2",
+                "MacAddress": "a6:b2:4a:fd:9a:81",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
+u10@u10-VirtualBox:~/Рабочий стол$ docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "e734a69c1c5500ee8a634e0adcec4629b5d833283a4f7414e15efe6d6496fbb9",
+        "Created": "2025-04-10T11:03:31.207236477+05:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont2 --rm alpine
+d6481625369ff5f956f03aa6046b432fa031d8831fcd77dc96465ebde1bac836
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont1 --rm alpine
+docker: Error response from daemon: Conflict. The container name "/cont1" is already in use by container "0a31cf4064a150eca812dcd6ea146d7ffb449fe59fab65cb5fb4215ddd8d34d0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net bridge --name cont3 --rm alpine
+750ae67ef24213b6ec309e98dacfea33055b0a906885f2fb7d296143af78a3ff
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net bridge --name cont4 --rm alpine
+64eaf7f409f9eca8d18d0fa48e0e602dfaa225e3f2e2c83ba55e19d2a99f6a41
+u10@u10-VirtualBox:~/Рабочий стол$ docker ps 
+CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS          PORTS     NAMES
+64eaf7f409f9   alpine    "/bin/sh"   13 seconds ago   Up 9 seconds              cont4
+750ae67ef242   alpine    "/bin/sh"   24 seconds ago   Up 20 seconds             cont3
+d6481625369f   alpine    "/bin/sh"   5 minutes ago    Up 5 minutes              cont2
+0a31cf4064a1   alpine    "/bin/sh"   59 minutes ago   Up 59 minutes             cont1
+
