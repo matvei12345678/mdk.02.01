@@ -274,4 +274,81 @@ CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS          PORTS     
 750ae67ef242   alpine    "/bin/sh"   24 seconds ago   Up 20 seconds             cont3
 d6481625369f   alpine    "/bin/sh"   5 minutes ago    Up 5 minutes              cont2
 0a31cf4064a1   alpine    "/bin/sh"   59 minutes ago   Up 59 minutes             cont1
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont1 --rm alpine
+6e798926f21e51474541cd8b890f8e95bc22a53e3e0e6c68f9fa7ccbc04e309d
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont2 --rm alpine
+2c739961ac24fbeaa985d37e4af43a30d012195bb521298c206c024058d82fcd
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont3 --rm alpine
+0adcab6b268484847e6009031a00dc855a76b194ad8e02a54b405fa427a78110
+u10@u10-VirtualBox:~/Рабочий стол$ docker run -itd --net my_bridge --name cont4 --rm alpine
+670612e322e3d7e3669e5927d052e536ea02aeb0a4a35f586a0185e2d1d95f70
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 ping -c 4 cont2
+PING cont2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.195 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.167 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.127 ms
+64 bytes from 172.18.0.3: seq=3 ttl=64 time=0.170 ms
+
+--- cont2 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.127/0.164/0.195 ms
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont2 ping -c 4 cont3
+PING cont3 (172.18.0.4): 56 data bytes
+64 bytes from 172.18.0.4: seq=0 ttl=64 time=0.234 ms
+64 bytes from 172.18.0.4: seq=1 ttl=64 time=0.114 ms
+64 bytes from 172.18.0.4: seq=2 ttl=64 time=0.128 ms
+64 bytes from 172.18.0.4: seq=3 ttl=64 time=0.193 ms
+
+--- cont3 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.114/0.167/0.234 ms
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont3 ping -c 4 cont4
+PING cont4 (172.18.0.5): 56 data bytes
+64 bytes from 172.18.0.5: seq=0 ttl=64 time=0.070 ms
+64 bytes from 172.18.0.5: seq=1 ttl=64 time=0.128 ms
+64 bytes from 172.18.0.5: seq=2 ttl=64 time=0.267 ms
+64 bytes from 172.18.0.5: seq=3 ttl=64 time=0.126 ms
+
+--- cont4 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.070/0.147/0.267 ms
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 traceroute mail.ru
+traceroute to mail.ru (217.69.139.202), 30 hops max, 46 byte packets
+ 1  u10-VirtualBox.local (172.18.0.1)  0.004 ms  0.020 ms  0.019 ms
+ 2  _gateway (10.0.2.2)  0.295 ms  0.081 ms  0.053 ms
+ 3  *  *  *
+ 4  192.168.88.1 (192.168.88.1)  1.560 ms  1.089 ms  2.161 ms
+ 5  host-89-251-106-133.bb-nsk.sib.mts.ru (89.251.106.133)  1.341 ms  1.155 ms  1.098 ms
+ 6  *^Ccontext canceled
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 traceroute 192.168.30.0
+traceroute to 192.168.30.0 (192.168.30.0), 30 hops max, 46 byte packets
+ 1  u10-VirtualBox.local (172.18.0.1)  0.004 ms  0.002 ms  0.002 ms
+ 2  *  *  *
+ 3  *  *  *
+ 4  *  *  *
+ 5^Ccontext canceledP
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 traceroute 192.168.30.64
+traceroute to 192.168.30.64 (192.168.30.64), 30 hops max, 46 byte packets
+ 1  u10-VirtualBox.local (172.18.0.1)  0.003 ms  0.005 ms  0.002 ms
+ 2  *  *  *
+ 3  *  *^Ccontext canceled
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 traceroute 192.168.30.128
+traceroute to 192.168.30.128 (192.168.30.128), 30 hops max, 46 byte packets
+ 1  u10-VirtualBox.local (172.18.0.1)  0.004 ms  0.002 ms  0.002 ms
+ 2=  ^Ccontext canceled
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 traceroute 192.168.30.160
+traceroute to 192.168.30.160 (192.168.30.160), 30 hops max, 46 byte packets
+ 1  u10-VirtualBox.local (172.18.0.1)  0.002 ms  0.003 ms  0.002 ms
+ 2^Ccontext canceled
+u10@u10-VirtualBox:~/Рабочий стол$ docker exec cont1 ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if10: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether da:24:73:05:e6:9e brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.2/16 brd 172.18.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
 
