@@ -1,5 +1,6 @@
-//Работа с  разделами 
-u09@u09-VirtualBox:~$ ssh stepan@192.168.9.10
+Работа с  разделами 
+matvei@123
+u10@u10-VirtualBox:~$ ssh matvei@192.168.9.10
 The authenticity of host '192.168.9.10 (192.168.9.10)' can't be established.
 ED25519 key fingerprint is SHA256:mqYvKqJqAx9Ccu7O8+pNXFkV8QKnX92LUSFQdJJfxsQ.
 This key is not known by any other names
@@ -12,7 +13,7 @@ Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-131-generic x86_64)
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/pro
 
-  System information as of Пт 02 мая 2025 07:34:56 UTC
+  System information as of Сб 03 мая 2025 07:34:56 UTC
 
   System load:  0.0                Processes:               111
   Usage of /:   44.8% of 11.21GB   Users logged in:         1
@@ -34,13 +35,13 @@ To check for new updates run: sudo apt update
 Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
 
 
-Last login: Fri May  2 05:44:51 2025
-stepan@123456789:~$ ls -l
+Last login: Fri May  3 05:44:51 2025
+matvei@123:~$ ls -l
 total 12
 drwxr-xr-x 4 stepan stepan 4096 мая  2 07:17 drive_sdb1
 drwxr-xr-x 4 stepan stepan 4096 мая  2 07:17 drive_sdb5
 drwxrwxr-x 2 stepan stepan 4096 мая  2 06:49 drive_sdb6
-stepan@123456789:~$ stat .
+matvei@123:~$ stat .
   File: .
   Size: 4096       Blocks: 8          IO Block: 4096   directory
 Device: fd00h/64768d Inode: 417021      Links: 7
@@ -49,7 +50,7 @@ Access: 2025-05-02 07:35:17.991989646 +0000
 Modify: 2025-05-02 06:49:12.155993811 +0000
 Change: 2025-05-02 06:49:12.155993811 +0000
  Birth: 2025-01-30 06:10:17.687999675 +0000
-stepan@123456789:~$ stat /
+matvei@123:~$ stat /
   File: /
   Size: 4096       Blocks: 8          IO Block: 4096   directory
 Device: fd00h/64768d Inode: 2           Links: 20
@@ -58,5 +59,5 @@ Access: 2025-05-02 05:43:03.851999787 +0000
 Modify: 2025-01-30 05:37:25.637538905 +0000
 Change: 2025-01-30 05:37:25.637538905 +0000
  Birth: 2025-01-30 05:30:10.000000000 +0000
-stepan@123456789:~$ Connection to 192.168.9.10 closed by remote host.
+matvei@123:~$ Connection to 192.168.9.10 closed by remote host.
 Connection to 192.168.9.10 closed.
